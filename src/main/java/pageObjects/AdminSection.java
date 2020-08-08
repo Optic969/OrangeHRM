@@ -9,7 +9,7 @@ public class AdminSection {
     private SelenideElement getAdminSection = $x("//b[contains(text(),'Admin')]");
     private SelenideElement getUserManagment = $x("//a[@id='menu_admin_UserManagement']");
     private SelenideElement getGetUserSection = $x("//*[@id=\"menu_admin_viewSystemUsers\"]");
-    
+
 
     public void getUserCreationPage(){
         getAdminSection.hover();

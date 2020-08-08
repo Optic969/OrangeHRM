@@ -1,4 +1,4 @@
-# Тестирование API сервиса artsy.net
+# Тестирование  сервиса OrangeHRM
 
 Тестовый финальный проект по тестированию сервиса OrangeHRM с использованием JUnit 5, Selenid, Jenkins, Allure и gradle
 
