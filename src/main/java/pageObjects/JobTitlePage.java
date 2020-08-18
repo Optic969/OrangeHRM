@@ -7,17 +7,21 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class JobTitlePage {
 
-    private ElementsCollection getJobTitleCheckBox = $$x("//table[@id='resultTable']//tbody//tr");
+    private ElementsCollection getJobTitleList = $$x("//table[@id='resultTable']//tbody//tr");
+    private ElementsCollection getJobTitleCheckBox = $$x("//td[contains(.,'Test')]/..//input");
     private ElementsCollection getJobTitleName = $$x("//a[contains(text(),'Test')]");
+    private final SelenideElement successMessage = $x("//div[@class='fadable']");
 
 
     public void chooseAddedThreeJobTitle(){
         for (SelenideElement jobTitle:getJobTitleCheckBox){
-           if (jobTitle.getText().contains("Test"))
-               jobTitle.click();
-
+            jobTitle.click();
         }
-        
+    }
+
+    public boolean checkSuccessTitleMessage() {
+
+        return successMessage.isDisplayed();
     }
 
 }

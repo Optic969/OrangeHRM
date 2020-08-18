@@ -8,6 +8,7 @@ public class LeaveSection {
     private SelenideElement getAssignLeaveSection = $x("//a[@id='menu_leave_assignLeave']");
 
     public void setGetAssignLeavePage(){
+
         getLeaveSection.hover();
         getAssignLeaveSection.hover().click();
     }

@@ -10,6 +10,7 @@ public class AddCandidatesForm {
     private SelenideElement getEmailField = $x("//input[@id='addCandidate_email']");
 
     public void addCandidate(){
+
         getFirstNameField.sendKeys("Petr");
         getLastNameField.sendKeys("Petrov");
         getEmailField.sendKeys("test@gmail.com");

@@ -12,6 +12,7 @@ public class AddJobTitleForm {
     private SelenideElement getSaveButton = $x("//input[@id='btnSave']");
 
     public void addNewJobTitle(String text) {
+
         getAddButton.click();
         getJobTitleName.sendKeys(text);
         getSaveButton.click();

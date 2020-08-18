@@ -24,7 +24,7 @@ public class AddUserForm {
 
         getNewEmployeeName.sendKeys("Thomas Fleming");
         getAddUserHeading.click();
-        getNewUserName.sendKeys("Black1");
+        getNewUserName.sendKeys("Black4");
         //getNewPassword.sendKeys("Qwerty1234");
         //getConfirmPassword.sendKeys("Qwerty1234");
         Selenide.sleep(1000);

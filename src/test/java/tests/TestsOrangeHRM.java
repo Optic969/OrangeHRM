@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.*;
 import pageObjects.*;
 
@@ -45,7 +46,6 @@ public class  TestsOrangeHRM extends TestsSetups {
         buttons.clickCancelButton();
         buttons.clickAddButton();
         addUserForm.addNewUser();
-        //addUserForm.shouldHaveAddedUserAttribute("Thomas Fleming","BlackDominator","Qwerty1234","Qwerty1234");
         buttons.clickSaveButton();
         Selenide.sleep(1000);
         Assertions.assertTrue(addUserForm.checkSuccessMessage());
@@ -71,6 +71,7 @@ public class  TestsOrangeHRM extends TestsSetups {
         jobTitlePage.chooseAddedThreeJobTitle();
         buttons.clickDeleteButton();
         //buttons.clickDialogDeleteButton();
+        //Assertions.assertTrue(jobTitlePage.checkSuccessTitleMessage());
     }
     /*@Test
     @Order(6)
