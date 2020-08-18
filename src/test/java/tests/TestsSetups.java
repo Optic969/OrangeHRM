@@ -1,23 +1,18 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import io.qameta.allure.Attachment;
-import junit.framework.TestResult;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.junit.jupiter.api.BeforeAll;
+
 
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestsSetups {
 
-    @BeforeClass
+    @BeforeAll
     public static void setConfiguration() {
-        Configuration.timeout = 10000;
-        Configuration.baseUrl = "https://opensource-demo.orangehrmlive.com/";
+        Configuration.startMaximized = true;
+        Configuration.baseUrl = "https://opensource-demo.orangehrmlive.com/index.php/auth/login";
         Configuration.browserSize = "1680x1024";
         open(Configuration.baseUrl);
     }

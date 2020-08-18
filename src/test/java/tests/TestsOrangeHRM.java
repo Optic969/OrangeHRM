@@ -1,12 +1,11 @@
 package tests;
 
-
-import io.qameta.allure.Step;
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.Test;
-import org.junit.jupiter.api.Order;
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.*;
 import pageObjects.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class  TestsOrangeHRM extends TestsSetups {
 
     LoginPage loginPage = new LoginPage();
@@ -14,7 +13,10 @@ public class  TestsOrangeHRM extends TestsSetups {
     Buttons buttons = new Buttons();
     AddUserForm addUserForm = new AddUserForm();
     AddJobTitleForm addJobTitleForm = new AddJobTitleForm();
-    RemoveJobTitle removeJobTitle = new RemoveJobTitle();
+    JobTitlePage jobTitlePage = new JobTitlePage();
+    RecruitmentSection recruitmentSection = new RecruitmentSection();
+    AddCandidatesForm addCandidatesForm = new AddCandidatesForm();
+     
 
     @Test
     @Order(1)
@@ -24,37 +26,64 @@ public class  TestsOrangeHRM extends TestsSetups {
         loginPage.getAuthorization();
 
     }
-
     @Test
     @Order(2)
-    @DisplayName("Check Add of new User ")
-    public void testAddNewUser() {
+    @DisplayName("Check Add New User empty form ")
+    public void testAddNewUserEmptyForm() throws InterruptedException {
 
         adminSection.getUserCreationPage();
         buttons.clickAddButton();
-        addUserForm.addNewUser();
-        addUserForm.shouldHaveAddedUserAttribute("Ivan","BlackDominator","Qwerty1234","Qwerty1234");
         buttons.clickSaveButton();
+        addUserForm.shouldHaveHintsForEmptyForm("Employee does not exist","Required");
+
     }
 
     @Test
     @Order(3)
+    @DisplayName("Check Add New User ")
+    public void testAddNewUser() throws InterruptedException {
+        buttons.clickCancelButton();
+        buttons.clickAddButton();
+        addUserForm.addNewUser();
+        //addUserForm.shouldHaveAddedUserAttribute("Thomas Fleming","BlackDominator","Qwerty1234","Qwerty1234");
+        buttons.clickSaveButton();
+        Selenide.sleep(1000);
+        Assertions.assertTrue(addUserForm.checkSuccessMessage());
+
+
+    }
+
+    @Test
+    @Order(4)
     @DisplayName("Check Add new three titles ")
     public void testAddNewThreeTitles() {
         adminSection.getJobTitleCreationPage();
-        for (int i =0; i <4; i++){
+        for (int i =0; i <3; i++){
             addJobTitleForm.addNewJobTitle("Test" + i);
         }
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     @DisplayName("Check Delete added three titles")
-    public void testRemoveAddedThreeTitles(){
+    public void testRemoveAddedThreeTitles() throws InterruptedException {
 
-        removeJobTitle.chooseAddedThreeJobTitle();
+        jobTitlePage.chooseAddedThreeJobTitle();
         buttons.clickDeleteButton();
+        //buttons.clickDialogDeleteButton();
     }
+    /*@Test
+    @Order(6)
+    @DisplayName("Check Add new candidate")
+    public void testAddNewCandidate() throws InterruptedException {
+
+        recruitmentSection.getAddNewRecruitmentCandidatesPage();
+        buttons.clickAddButton();
+        addCandidatesForm.addCandidate();
+        buttons.clickSaveButton();
+        recruitmentSection.shouldHaveErrorMessage("An internal error occurred. Please contact your system administrator.");
+    }*/
+
 
 
 }
