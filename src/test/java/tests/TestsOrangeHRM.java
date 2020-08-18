@@ -18,14 +18,12 @@ public class  TestsOrangeHRM extends TestsSetups {
     RecruitmentSection recruitmentSection = new RecruitmentSection();
     AddCandidatesForm addCandidatesForm = new AddCandidatesForm();
      
-
     @Test
     @Order(1)
     @DisplayName("Check authorization to OrangeHRM ")
     public void testAuthorization() {
 
         loginPage.getAuthorization();
-
     }
     @Test
     @Order(2)
@@ -36,9 +34,7 @@ public class  TestsOrangeHRM extends TestsSetups {
         buttons.clickAddButton();
         buttons.clickSaveButton();
         addUserForm.shouldHaveHintsForEmptyForm("Employee does not exist","Required");
-
     }
-
     @Test
     @Order(3)
     @DisplayName("Check Add New User ")
@@ -49,10 +45,7 @@ public class  TestsOrangeHRM extends TestsSetups {
         buttons.clickSaveButton();
         Selenide.sleep(1000);
         Assertions.assertTrue(addUserForm.checkSuccessMessage());
-
-
     }
-
     @Test
     @Order(4)
     @DisplayName("Check Add new three titles ")
@@ -62,7 +55,6 @@ public class  TestsOrangeHRM extends TestsSetups {
             addJobTitleForm.addNewJobTitle("Test" + i);
         }
     }
-
     @Test
     @Order(5)
     @DisplayName("Check Delete added three titles")
@@ -70,10 +62,11 @@ public class  TestsOrangeHRM extends TestsSetups {
 
         jobTitlePage.chooseAddedThreeJobTitle();
         buttons.clickDeleteButton();
-        //buttons.clickDialogDeleteButton();
-        //Assertions.assertTrue(jobTitlePage.checkSuccessTitleMessage());
+        buttons.clickDialogDeleteButton();
+        Selenide.sleep(1000);
+        jobTitlePage.checkSuccessTitleMessage();
     }
-    /*@Test
+    @Test
     @Order(6)
     @DisplayName("Check Add new candidate")
     public void testAddNewCandidate() throws InterruptedException {
@@ -83,8 +76,7 @@ public class  TestsOrangeHRM extends TestsSetups {
         addCandidatesForm.addCandidate();
         buttons.clickSaveButton();
         recruitmentSection.shouldHaveErrorMessage("An internal error occurred. Please contact your system administrator.");
-    }*/
-
-
+    }
+    
 
 }

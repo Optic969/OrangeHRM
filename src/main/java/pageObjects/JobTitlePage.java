@@ -10,7 +10,7 @@ public class JobTitlePage {
     private ElementsCollection getJobTitleList = $$x("//table[@id='resultTable']//tbody//tr");
     private ElementsCollection getJobTitleCheckBox = $$x("//td[contains(.,'Test')]/..//input");
     private ElementsCollection getJobTitleName = $$x("//a[contains(text(),'Test')]");
-    private final SelenideElement successMessage = $x("//div[@class='fadable']");
+    private SelenideElement successMessage = $x("d//div[@class='fadable']");
 
 
     public void chooseAddedThreeJobTitle(){
@@ -19,9 +19,9 @@ public class JobTitlePage {
         }
     }
 
-    public boolean checkSuccessTitleMessage() {
+    public void checkSuccessTitleMessage() {
 
-        return successMessage.isDisplayed();
+         successMessage.isDisplayed();
     }
 
 }
