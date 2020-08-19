@@ -1,11 +1,11 @@
-package pageObjects;
+package pageObjects.adminSection;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class AdminSection {
+public class    AdminSectionNavigation {
 
     private SelenideElement getAdminSection = $x("//a[@id='menu_admin_viewAdminModule']//b");
     private SelenideElement getUserManagment = $x("//a[@id='menu_admin_UserManagement']");

@@ -1,5 +1,6 @@
-package pageObjects;
+package pageObjects.buttons;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -12,7 +13,8 @@ public class Buttons {
     private SelenideElement getCancelButton = $x("//input[@id='btnCancel']");
     private SelenideElement getPIM = $x("//b[contains(text(),'PIM')]");
     private SelenideElement getDialogDeleteButton = $x("//input[@id='dialogDeleteBtn']");
-    private SelenideElement getGetDialogOkButton = $x("//input[@id='confirmOkButton']");
+    private SelenideElement getDialogOkButton = $x("//input[@id='confirmOkButton']");
+    private SelenideElement getSearchButton = $x("//input[@id='searchBtn']");
 
     public void clickAddButton() throws InterruptedException {
 
@@ -49,7 +51,7 @@ public class Buttons {
     public void clickDialogOkButton() throws InterruptedException {
 
         Thread.sleep(1000);
-        getGetDialogOkButton.click();
+        getDialogOkButton.shouldBe(Condition.visible).click();
     }
         public void clickPIM(){
 

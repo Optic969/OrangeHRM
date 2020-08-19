@@ -1,13 +1,11 @@
-package pageObjects;
+package pageObjects.recruitmentSection;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class RecruitmentSection {
+public class RecruitmentSectionNavigation {
 
     private SelenideElement getRecruitmentSection = $x("//b[contains(text(),'Recruitment')]");
     private SelenideElement getCandidateSection = $x("//a[@id='menu_recruitment_viewCandidates']");

@@ -1,24 +1,35 @@
 package tests;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.*;
-import pageObjects.*;
+import pageObjects.adminSection.*;
+import pageObjects.buttons.Buttons;
+import pageObjects.dashboardSection.*;
+import pageObjects.leaveSection.*;
+import pageObjects.loginPage.LoginPage;
+import pageObjects.PIMSection.*;
+import pageObjects.recruitmentSection.*;
+import utils.TestsSetups;
+
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class  TestsOrangeHRM extends TestsSetups {
 
     LoginPage loginPage = new LoginPage();
-    AdminSection adminSection = new AdminSection();
+    AdminSectionNavigation adminSectionNavigation = new AdminSectionNavigation();
     Buttons buttons = new Buttons();
     AddUserForm addUserForm = new AddUserForm();
     AddJobTitleForm addJobTitleForm = new AddJobTitleForm();
     JobTitlePage jobTitlePage = new JobTitlePage();
-    RecruitmentSection recruitmentSection = new RecruitmentSection();
+    RecruitmentSectionNavigation recruitmentSectionNavigation = new RecruitmentSectionNavigation();
     AddCandidatesForm addCandidatesForm = new AddCandidatesForm();
-    LeaveSection leaveSection = new LeaveSection();
+    LeaveSectionNavigation leaveSectionNavigation = new LeaveSectionNavigation();
     AssignLeaveForm assignLeaveForm = new AssignLeaveForm();
+    DashboardNavigation dashboardNavigation = new DashboardNavigation();
+    DashboardPage dashboardPage = new DashboardPage();
+    PIMNavigation pimNavigation = new PIMNavigation();
+    EmployeeAddPage employeeAddPage = new EmployeeAddPage();
      
     @Test
     @Order(1)
@@ -29,10 +40,18 @@ public class  TestsOrangeHRM extends TestsSetups {
     }
     @Test
     @Order(2)
+    @DisplayName("Crate test Employee ")
+    public void testCreateTestEmployee() throws InterruptedException {
+        pimNavigation.getPIMAddEmployeePage();
+        employeeAddPage.createNewEmployee();
+        buttons.clickSaveButton();
+    }/*
+    @Test
+    @Order(3)
     @DisplayName("Check Add New User empty form ")
     public void testAddNewUserEmptyForm() throws InterruptedException {
 
-        adminSection.getUserCreationPage();
+        adminSectionNavigation.getUserCreationPage();
         buttons.clickAddButton();
         buttons.clickSaveButton();
         addUserForm.shouldHaveHintsForEmptyAddUserForm(
@@ -40,7 +59,7 @@ public class  TestsOrangeHRM extends TestsSetups {
                 "Required");
     }
     @Test
-    @Order(3)
+    @Order(4)
     @DisplayName("Check Add New User ")
     public void testAddNewUser() throws InterruptedException {
         buttons.clickCancelButton();
@@ -51,16 +70,16 @@ public class  TestsOrangeHRM extends TestsSetups {
         Assertions.assertTrue(addUserForm.checkSuccessMessage());
     }
     @Test
-    @Order(4)
+    @Order(5)
     @DisplayName("Check Add new three titles ")
     public void testAddNewThreeTitles() {
-        adminSection.getJobTitleCreationPage();
+        adminSectionNavigation.getJobTitleCreationPage();
         for (int i =0; i <3; i++){
             addJobTitleForm.addNewJobTitle("Test" + i);
         }
     }
     @Test
-    @Order(5)
+    @Order(6)
     @DisplayName("Check Delete added three titles")
     public void testRemoveAddedThreeTitles() throws InterruptedException {
 
@@ -71,36 +90,54 @@ public class  TestsOrangeHRM extends TestsSetups {
         jobTitlePage.checkSuccessTitleMessage();
     }
     @Test
-    @Order(6)
+    @Order(7)
     @DisplayName("Check Add new candidate")
     public void testAddNewCandidate() throws InterruptedException {
 
-        recruitmentSection.getAddNewRecruitmentCandidatesPage();
+        recruitmentSectionNavigation.getAddNewRecruitmentCandidatesPage();
         buttons.clickAddButton();
         addCandidatesForm.addCandidate();
         buttons.clickSaveButton();
-        recruitmentSection.shouldHaveErrorMessage("An internal error occurred. Please contact your system administrator.");
+        recruitmentSectionNavigation.shouldHaveErrorMessage("An internal error occurred. Please contact your system administrator.");
     }
     @Test
-    @Order(7)
+    @Order(8)
     @DisplayName("Check Assign Leave empty form")
     public void testAddAssignLeave() throws InterruptedException {
-        leaveSection.getAssignLeavePage();
+        leaveSectionNavigation.getAssignLeavePage();
         buttons.clickAssignButton();
         assignLeaveForm.shouldHaveHintsForEmptyAssignLeaveForm(
                 "Invalid",
                 "Required",
                 "Should be a valid date in yyyy-mm-dd format",
                 "Should be a valid date in yyyy-mm-dd format");
-    }
+    }*/
     @Test
-    @Order(8)
+    @Order(9)
     @DisplayName("Check Add Assign Leave")
     public void testCheckAddAssignLeave() throws InterruptedException {
-
-        assignLeaveForm.getAddAssignLeave("Thomas Fleming",19);
+        leaveSectionNavigation.getAssignLeavePage();
+        assignLeaveForm.getAddAssignLeave(19,20);
+        Selenide.sleep(1000);
         buttons.clickAssignButton();
         buttons.clickDialogOkButton();
+        assignLeaveForm.checkSuccessMessage();
+    }
+    @Test
+    @Order(10)
+    @DisplayName("Check presence of Dashboard elements")
+    public void testCheckDashboardElementPresent(){
+
+        dashboardNavigation.getDashboardPage();
+        dashboardPage.checkDashboardElementPresent();
+    }
+    @Test
+    @Order(11)
+    @DisplayName("Check PIM employee form")
+    public void testCheckPIMEmployeeForm(){
+
+        pimNavigation.getPIMEmployeeListPage();
+
     }
 
 }

@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.adminSection;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import utils.Property;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -20,11 +20,9 @@ public class AddUserForm {
 
     public void addNewUser() throws InterruptedException {
 
-        getNewEmployeeName.sendKeys("Thomas Fleming");
+        getNewEmployeeName.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         getAddUserHeading.click();
-        getNewUserName.sendKeys("Black9");
-        //getNewPassword.sendKeys("Qwerty1234");
-        //getConfirmPassword.sendKeys("Qwerty1234");
+        getNewUserName.sendKeys(Property.getProperty("userName"));
         Selenide.sleep(1000);
     }
     public boolean checkSuccessMessage() {
