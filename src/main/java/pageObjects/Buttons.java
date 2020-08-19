@@ -12,33 +12,47 @@ public class Buttons {
     private SelenideElement getCancelButton = $x("//input[@id='btnCancel']");
     private SelenideElement getPIM = $x("//b[contains(text(),'PIM')]");
     private SelenideElement getDialogDeleteButton = $x("//input[@id='dialogDeleteBtn']");
+    private SelenideElement getGetDialogOkButton = $x("//input[@id='confirmOkButton']");
 
     public void clickAddButton() throws InterruptedException {
+
         Thread.sleep(1000);
         getAddButton.click();
     }
     public void clickSaveButton() throws InterruptedException {
+
         Thread.sleep(1000);
         getSaveButton.click();
     }
 
     public void clickDeleteButton() throws InterruptedException {
+
         Thread.sleep(1000);
         getDeleteButton.click();
     }
     public void clickDialogDeleteButton() throws InterruptedException {
+
         Thread.sleep(1000);
         getDialogDeleteButton.click();
     }
 
-    public void getGetAssignButton(){
+    public void clickAssignButton() throws InterruptedException {
+
+        Thread.sleep(1000);
         getAssignButton.click();
     }
     public void clickCancelButton() throws InterruptedException {
+
         Thread.sleep(1000);
         getCancelButton.click();
     }
-    public void clickPIM(){
+    public void clickDialogOkButton() throws InterruptedException {
+
+        Thread.sleep(1000);
+        getGetDialogOkButton.click();
+    }
+        public void clickPIM(){
+
         getPIM.click();
     }
 }

@@ -13,20 +13,16 @@ public class AdminSection {
     private SelenideElement getJobSection = $x("//a[@id='menu_admin_Job']");
     private SelenideElement getJobTitleSection = $x("//a[@id='menu_admin_viewJobTitleList']");
 
-
-
     public void getUserCreationPage(){
 
         getAdminSection.waitUntil(visible, 30000).hover();
         getUserManagment.hover();
         getUserSection.hover().click();
     }
-
     public void getUserPage(){
 
         getAdminSection.click();
     }
-
     public void getJobTitleCreationPage(){
 
         getAdminSection.hover();

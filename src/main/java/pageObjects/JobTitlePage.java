@@ -12,13 +12,12 @@ public class JobTitlePage {
     private ElementsCollection getJobTitleName = $$x("//a[contains(text(),'Test')]");
     private SelenideElement successMessage = $x("d//div[@class='fadable']");
 
-
     public void chooseAddedThreeJobTitle(){
+
         for (SelenideElement jobTitle:getJobTitleCheckBox){
             jobTitle.click();
         }
     }
-
     public void checkSuccessTitleMessage() {
 
          successMessage.isDisplayed();

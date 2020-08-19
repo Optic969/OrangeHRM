@@ -18,27 +18,24 @@ public class AddUserForm {
     private SelenideElement getAddUserHeading = $x("//h1[@id='UserHeading']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
-
-
     public void addNewUser() throws InterruptedException {
 
         getNewEmployeeName.sendKeys("Thomas Fleming");
         getAddUserHeading.click();
-        getNewUserName.sendKeys("Black7");
+        getNewUserName.sendKeys("Black9");
         //getNewPassword.sendKeys("Qwerty1234");
         //getConfirmPassword.sendKeys("Qwerty1234");
         Selenide.sleep(1000);
     }
-
     public boolean checkSuccessMessage() {
+
         return successMessage.isDisplayed();
     }
+    public void shouldHaveHintsForEmptyAddUserForm(String EmployeeNameHint, String UserNameHint){
 
-    public void shouldHaveHintsForEmptyForm(String EmployeeNameHint, String UserNameHint){
         getEmployeeNameHints.shouldHave(Condition.text(EmployeeNameHint));
         getNewUserNameHints.shouldHave(Condition.text(UserNameHint));
     }
-
     public void shouldHaveAddedUserAttribute(String EmployeeName, String UserName, String Password, String ConfirmPassword) {
 
         getNewEmployeeName.shouldHave(Condition.text(EmployeeName));

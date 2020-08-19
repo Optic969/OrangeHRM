@@ -9,7 +9,6 @@ private SelenideElement getUserName = $x("//input[@id='txtUsername']");
 private SelenideElement getPassword = $x("//input[@id='txtPassword']");
 private SelenideElement getLogin = $x("//input[@id='btnLogin']");
 
-
 public void getAuthorization(){
 
     getUserName.sendKeys("Admin");

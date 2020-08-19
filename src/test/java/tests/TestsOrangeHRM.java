@@ -17,6 +17,8 @@ public class  TestsOrangeHRM extends TestsSetups {
     JobTitlePage jobTitlePage = new JobTitlePage();
     RecruitmentSection recruitmentSection = new RecruitmentSection();
     AddCandidatesForm addCandidatesForm = new AddCandidatesForm();
+    LeaveSection leaveSection = new LeaveSection();
+    AssignLeaveForm assignLeaveForm = new AssignLeaveForm();
      
     @Test
     @Order(1)
@@ -33,7 +35,9 @@ public class  TestsOrangeHRM extends TestsSetups {
         adminSection.getUserCreationPage();
         buttons.clickAddButton();
         buttons.clickSaveButton();
-        addUserForm.shouldHaveHintsForEmptyForm("Employee does not exist","Required");
+        addUserForm.shouldHaveHintsForEmptyAddUserForm(
+                "Employee does not exist",
+                "Required");
     }
     @Test
     @Order(3)
@@ -77,6 +81,26 @@ public class  TestsOrangeHRM extends TestsSetups {
         buttons.clickSaveButton();
         recruitmentSection.shouldHaveErrorMessage("An internal error occurred. Please contact your system administrator.");
     }
-    
+    @Test
+    @Order(7)
+    @DisplayName("Check Assign Leave empty form")
+    public void testAddAssignLeave() throws InterruptedException {
+        leaveSection.getAssignLeavePage();
+        buttons.clickAssignButton();
+        assignLeaveForm.shouldHaveHintsForEmptyAssignLeaveForm(
+                "Invalid",
+                "Required",
+                "Should be a valid date in yyyy-mm-dd format",
+                "Should be a valid date in yyyy-mm-dd format");
+    }
+    @Test
+    @Order(8)
+    @DisplayName("Check Add Assign Leave")
+    public void testCheckAddAssignLeave() throws InterruptedException {
+
+        assignLeaveForm.getAddAssignLeave("Thomas Fleming",19);
+        buttons.clickAssignButton();
+        buttons.clickDialogOkButton();
+    }
 
 }
