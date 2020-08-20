@@ -100,7 +100,7 @@ public class  TestsOrangeHRM extends TestsSetups {
         buttons.clickAddButton();
         addCandidatesForm.addCandidate();
         buttons.clickSaveButton();
-        recruitmentSectionNavigation.shouldHaveErrorMessage("An internal error occurred. Please contact your system administrator.");
+        recruitmentSectionNavigation.shouldHaveErrorMessage("An internal error occurred999. Please contact your system administrator.");
     }
     @Test
     @Order(8)
