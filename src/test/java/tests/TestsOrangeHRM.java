@@ -30,6 +30,8 @@ public class  TestsOrangeHRM extends TestsSetups {
     DashboardPage dashboardPage = new DashboardPage();
     PIMNavigation pimNavigation = new PIMNavigation();
     EmployeeAddPage employeeAddPage = new EmployeeAddPage();
+    EmployeeListPage employeeListPage = new EmployeeListPage();
+    EmployeePersonalDetailsForm employeePersonalDetailsForm = new EmployeePersonalDetailsForm();
      
     @Test
     @Order(1)
@@ -40,12 +42,12 @@ public class  TestsOrangeHRM extends TestsSetups {
     }
     @Test
     @Order(2)
-    @DisplayName("Crate test Employee ")
+    @DisplayName("Create test Employee ")
     public void testCreateTestEmployee() throws InterruptedException {
         pimNavigation.getPIMAddEmployeePage();
         employeeAddPage.createNewEmployee();
         buttons.clickSaveButton();
-    }/*
+    }
     @Test
     @Order(3)
     @DisplayName("Check Add New User empty form ")
@@ -111,7 +113,7 @@ public class  TestsOrangeHRM extends TestsSetups {
                 "Required",
                 "Should be a valid date in yyyy-mm-dd format",
                 "Should be a valid date in yyyy-mm-dd format");
-    }*/
+    }
     @Test
     @Order(9)
     @DisplayName("Check Add Assign Leave")
@@ -137,7 +139,24 @@ public class  TestsOrangeHRM extends TestsSetups {
     public void testCheckPIMEmployeeForm(){
 
         pimNavigation.getPIMEmployeeListPage();
-
+        employeeListPage.openEmployeeProfile();
+        employeePersonalDetailsForm.checkEmployeePersonalDetailsFormElements();
+        employeePersonalDetailsForm.shouldContainsPersonalInfo();
     }
-
+    @Test
+    @Order(12)
+    @DisplayName("Delete created test Employy")
+    public void testDeleteCreatedEmployee() throws InterruptedException {
+        pimNavigation.getPIMEmployeePage();
+        employeeListPage.getEmployForDelete();
+        buttons.clickDeleteButton();
+        buttons.clickDialogDeleteButton();
+        Assertions.assertTrue(employeeListPage.checkSuccessMessage());
+    }
+    @Test
+    @Order(13)
+    @DisplayName("Log out from OrangeHRM")
+    public void testLogOutFromOrangeHRM(){
+        loginPage.logoutFromApp();
+    }
 }

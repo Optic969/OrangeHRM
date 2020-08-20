@@ -17,4 +17,8 @@ public class PIMNavigation {
         getPIMSection.hover();
         getEmployeeAdd.hover().click();
     }
+    public void getPIMEmployeePage(){
+        getPIMSection.click();
+        getEmployeeList.click();
+    }
 }
