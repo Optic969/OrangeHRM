@@ -3,6 +3,7 @@ package pageObjects.adminSection;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import utils.Property;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -18,6 +19,7 @@ public class AddUserForm {
     private SelenideElement getAddUserHeading = $x("//h1[@id='UserHeading']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
+    @Step("Add new user")
     public void addNewUser() throws InterruptedException {
 
         getNewEmployeeName.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
@@ -29,6 +31,7 @@ public class AddUserForm {
 
         return successMessage.isDisplayed();
     }
+    @Step("Check hints for empty Add user form")
     public void shouldHaveHintsForEmptyAddUserForm(String EmployeeNameHint, String UserNameHint){
 
         getEmployeeNameHints.shouldHave(Condition.text(EmployeeNameHint));

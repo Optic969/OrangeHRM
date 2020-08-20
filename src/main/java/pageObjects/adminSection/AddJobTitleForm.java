@@ -1,6 +1,8 @@
 package pageObjects.adminSection;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class AddJobTitleForm {
@@ -11,6 +13,7 @@ public class AddJobTitleForm {
     private SelenideElement getAddButton = $x("//input[@id='btnAdd']");
     private SelenideElement getSaveButton = $x("//input[@id='btnSave']");
 
+    @Step("Add new Job title")
     public void addNewJobTitle(String text) {
 
         getAddButton.click();

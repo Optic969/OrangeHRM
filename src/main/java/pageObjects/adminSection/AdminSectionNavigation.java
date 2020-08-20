@@ -1,6 +1,7 @@
 package pageObjects.adminSection;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
@@ -13,16 +14,19 @@ public class    AdminSectionNavigation {
     private SelenideElement getJobSection = $x("//a[@id='menu_admin_Job']");
     private SelenideElement getJobTitleSection = $x("//a[@id='menu_admin_viewJobTitleList']");
 
+    @Step("Get User creation page")
     public void getUserCreationPage(){
 
         getAdminSection.waitUntil(visible, 30000).hover();
         getUserManagment.hover();
         getUserSection.hover().click();
     }
+    @Step("Get User Page")
     public void getUserPage(){
 
         getAdminSection.click();
     }
+    @Step("Get Job title creation page")
     public void getJobTitleCreationPage(){
 
         getAdminSection.hover();

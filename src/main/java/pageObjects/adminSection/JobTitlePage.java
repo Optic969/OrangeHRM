@@ -2,6 +2,7 @@ package pageObjects.adminSection;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -12,6 +13,7 @@ public class JobTitlePage {
     private ElementsCollection getJobTitleName = $$x("//a[contains(text(),'Test')]");
     private SelenideElement successMessage = $x("d//div[@class='fadable']");
 
+    @Step("Choose added three Job title")
     public void chooseAddedThreeJobTitle(){
 
         for (SelenideElement jobTitle:getJobTitleCheckBox){

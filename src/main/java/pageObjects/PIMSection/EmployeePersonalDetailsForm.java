@@ -2,6 +2,7 @@ package pageObjects.PIMSection;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import utils.Property;
 
@@ -22,7 +23,7 @@ public class EmployeePersonalDetailsForm {
     private final SelenideElement editButton = $x("//input[@id='btnSave']");
     private final SelenideElement addAttachmentButton = $x("//input[@id='btnAddAttachment']");
 
-
+    @Step("Check Employee personal details form elements present ")
     public void checkEmployeePersonalDetailsFormElements() {
 
         firstNameField.shouldBe(Condition.visible);
@@ -38,7 +39,9 @@ public class EmployeePersonalDetailsForm {
         editButton.shouldBe(Condition.visible);
         addAttachmentButton.shouldBe(Condition.visible);
     }
+    @Step("Check contains for Personal info")
     public void shouldContainsPersonalInfo() {
+
         Assertions.assertEquals(firstNameField.getValue(), Property.getProperty("employeeName"));
         Assertions.assertEquals(lastNameField.getValue(), Property.getProperty("employeeLastName"));
         Assertions.assertEquals(employeeIdField.getValue(), EmployeeAddPage.employeeId);

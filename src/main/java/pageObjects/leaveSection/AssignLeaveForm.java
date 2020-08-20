@@ -3,6 +3,7 @@ package pageObjects.leaveSection;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$$x;
@@ -23,6 +24,7 @@ public class AssignLeaveForm {
     private SelenideElement getToDateHints = $x("//*[@id=\"frmLeaveApply\"]/fieldset/ol/li[5]/span");
     private SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
+    @Step("Check hints for empty Assign leave form")
     public void shouldHaveHintsForEmptyAssignLeaveForm(String EmployeeNameHint,String LeaveTypeHints,String FromDateHints,String ToDateHints){
 
         getEmployeeNameHints.shouldHave(Condition.text(EmployeeNameHint));
@@ -31,6 +33,7 @@ public class AssignLeaveForm {
         getToDateHints.shouldHave(Condition.text(ToDateHints));
 
     }
+    @Step("Add Assign leave")
     public void getAddAssignLeave(int CalendarDayFrom, int CalendarDayTo){
 
         getEmployeeNameField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));

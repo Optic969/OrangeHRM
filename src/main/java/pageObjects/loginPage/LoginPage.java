@@ -1,6 +1,8 @@
 package pageObjects.loginPage;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
@@ -11,12 +13,14 @@ public class LoginPage {
     private SelenideElement userLink = $x("//a[@id='welcome']");
     private SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
 
-public void getAuthorization(){
+    @Step("Authorization to OrangeHRM")
+    public void getAuthorization(){
 
         getUserName.sendKeys("Admin");
         getPassword.sendKeys("admin123");
         getLogin.click();
 }
+    @Step("Log out from OrangeHRM")
     public void logoutFromApp() {
 
         userLink.click();

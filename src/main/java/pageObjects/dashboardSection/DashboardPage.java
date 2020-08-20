@@ -2,6 +2,8 @@ package pageObjects.dashboardSection;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class DashboardPage {
@@ -14,6 +16,7 @@ public class DashboardPage {
     private SelenideElement getDashboardLegend = $x("//div[@id='panel_draggable_1_1']");
     private SelenideElement getDashboardPendingLeaveRequest = $x("//div[@id='task-list-group-panel-menu_holder']");
 
+    @Step("Check Dashboard element present")
     public void checkDashboardElementPresent(){
         getDashboardTitle.shouldBe(Condition.visible);
         getDashboardAssignLeaveLink.shouldBe(Condition.visible);

@@ -1,6 +1,8 @@
 package pageObjects.recruitmentSection;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class AddCandidatesForm {
@@ -9,6 +11,7 @@ public class AddCandidatesForm {
     private SelenideElement getLastNameField = $x("//input[@id='addCandidate_lastName']");
     private SelenideElement getEmailField = $x("//input[@id='addCandidate_email']");
 
+    @Step("Add New candidate")
     public void addCandidate(){
 
         getFirstNameField.sendKeys("Petr");
