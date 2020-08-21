@@ -47,6 +47,7 @@ public class AssignLeaveForm {
         Selenide.sleep(1000);
 
     }
+    @Step("Check success message")
     public boolean checkSuccessMessage() {
 
         return successMessage.isDisplayed();

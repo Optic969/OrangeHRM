@@ -1,5 +1,6 @@
 package pageObjects.PIMSection;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -25,8 +26,9 @@ public class EmployeeListPage {
         idNumber.click();
         $x(String.format("//a[contains(text(), %s)]/parent::td/preceding-sibling::td", EmployeeAddPage.employeeId)).click();
     }
-    public boolean checkSuccessMessage() {
+    @Step("Check success message")
+    public void checkSuccessMessage() {
 
-        return successMessage.isDisplayed();
+        successMessage.shouldBe(Condition.visible);
     }
 }

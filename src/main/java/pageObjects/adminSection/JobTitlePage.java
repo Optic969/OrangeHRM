@@ -20,6 +20,7 @@ public class JobTitlePage {
             jobTitle.click();
         }
     }
+    @Step("Check success Title message")
     public void checkSuccessTitleMessage() {
 
          successMessage.isDisplayed();

@@ -27,9 +27,10 @@ public class AddUserForm {
         getNewUserName.sendKeys(Property.getProperty("userName"));
         Selenide.sleep(1000);
     }
-    public boolean checkSuccessMessage() {
+    @Step("Check success message")
+    public void checkSuccessMessage() {
 
-        return successMessage.isDisplayed();
+        successMessage.shouldBe(Condition.visible);
     }
     @Step("Check hints for empty Add user form")
     public void shouldHaveHintsForEmptyAddUserForm(String EmployeeNameHint, String UserNameHint){
