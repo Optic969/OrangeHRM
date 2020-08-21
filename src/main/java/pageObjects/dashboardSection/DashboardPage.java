@@ -18,6 +18,7 @@ public class DashboardPage {
 
     @Step("Check Dashboard element present")
     public void checkDashboardElementPresent(){
+
         getDashboardTitle.shouldBe(Condition.visible);
         getDashboardAssignLeaveLink.shouldBe(Condition.visible);
         getDashboardLeaveListLink.shouldBe(Condition.visible);

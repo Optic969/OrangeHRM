@@ -2,6 +2,7 @@ package pageObjects.leaveSection;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import utils.Property;
@@ -43,9 +44,11 @@ public class AssignLeaveForm {
         getFromDateInCalendar.get(CalendarDayFrom).click();
         getToDateField.click();
         getToDateInCalendar.get(CalendarDayTo).click();
+        Selenide.sleep(1000);
 
     }
     public boolean checkSuccessMessage() {
+
         return successMessage.isDisplayed();
     }
 

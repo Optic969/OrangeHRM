@@ -1,6 +1,7 @@
 package pageObjects.buttons;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -29,6 +30,7 @@ public class Buttons {
 
         Thread.sleep(1000);
         getSaveButton.click();
+        Selenide.sleep(1000);
     }
     @Step("Click Delete button")
     public void clickDeleteButton() throws InterruptedException {
@@ -41,6 +43,7 @@ public class Buttons {
 
         Thread.sleep(1000);
         getDialogDeleteButton.click();
+        Selenide.sleep(1000);
     }
     @Step("Click Assign button")
     public void clickAssignButton() throws InterruptedException {

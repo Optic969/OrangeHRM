@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 import pageObjects.adminSection.*;
 import pageObjects.buttons.Buttons;
@@ -68,7 +67,6 @@ public class  TestsOrangeHRM extends TestsSetups {
         buttons.clickAddButton();
         addUserForm.addNewUser();
         buttons.clickSaveButton();
-        Selenide.sleep(1000);
         Assertions.assertTrue(addUserForm.checkSuccessMessage());
     }
     @Test
@@ -88,7 +86,6 @@ public class  TestsOrangeHRM extends TestsSetups {
         jobTitlePage.chooseAddedThreeJobTitle();
         buttons.clickDeleteButton();
         buttons.clickDialogDeleteButton();
-        Selenide.sleep(1000);
         jobTitlePage.checkSuccessTitleMessage();
     }
     @Test
@@ -100,7 +97,7 @@ public class  TestsOrangeHRM extends TestsSetups {
         buttons.clickAddButton();
         addCandidatesForm.addCandidate();
         buttons.clickSaveButton();
-        recruitmentSectionNavigation.shouldHaveErrorMessage("An internal error occurred999. Please contact your system administrator.");
+        recruitmentSectionNavigation.shouldHaveErrorMessage("An internal error occurred. Please contact your system administrator.");
     }
     @Test
     @Order(8)
@@ -120,7 +117,6 @@ public class  TestsOrangeHRM extends TestsSetups {
     public void testCheckAddAssignLeave() throws InterruptedException {
         leaveSectionNavigation.getAssignLeavePage();
         assignLeaveForm.getAddAssignLeave(19,20);
-        Selenide.sleep(1000);
         buttons.clickAssignButton();
         buttons.clickDialogOkButton();
         assignLeaveForm.checkSuccessMessage();
@@ -145,18 +141,13 @@ public class  TestsOrangeHRM extends TestsSetups {
     }
     @Test
     @Order(12)
-    @DisplayName("Delete created test Employy")
+    @DisplayName("Delete created test Employee")
     public void testDeleteCreatedEmployee() throws InterruptedException {
         pimNavigation.getPIMEmployeePage();
         employeeListPage.getEmployForDelete();
         buttons.clickDeleteButton();
         buttons.clickDialogDeleteButton();
         Assertions.assertTrue(employeeListPage.checkSuccessMessage());
-    }
-    @Test
-    @Order(13)
-    @DisplayName("Log out from OrangeHRM")
-    public void testLogOutFromOrangeHRM(){
         loginPage.logoutFromApp();
     }
 }
