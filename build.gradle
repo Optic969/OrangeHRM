@@ -46,4 +46,5 @@ dependencies {
     testRuntimeOnly('io.qameta.allure:allure-junit5:2.13.2')
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
-}}
+}
+}
