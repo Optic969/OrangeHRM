@@ -25,13 +25,25 @@ tasks.withType(JavaCompile){
 test {
     useJUnitPlatform()
 }
+
+configurations.configureEach {
+    resolutionStrategy.dependencySubstitution {
+        substitute module('com.google.guava:guava') with module('com.google.guava:guava:31.1-jre')
+    }
+
+
 dependencies {
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
-    implementation 'com.codeborne:selenide:5.13.0'
+    implementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
+    implementation 'com.codeborne:selenide:6.19.1'
     implementation('io.qameta.allure:allure-selenide:2.13.2')
+    implementation('com.google.guava:guava:32.1.2-jre') {
+        capabilities {
+            requireCapability('com.google.guava:guava:jre')
+        }
+    }
     testImplementation('org.junit.jupiter:junit-jupiter:5.4.2')
     testImplementation('io.qameta.allure:allure-selenide:2.13.2')
     testRuntimeOnly('io.qameta.allure:allure-junit5:2.13.2')
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
-}
+}}

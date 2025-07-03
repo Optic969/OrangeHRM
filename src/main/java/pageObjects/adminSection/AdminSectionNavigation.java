@@ -1,7 +1,10 @@
 package pageObjects.adminSection;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
@@ -17,7 +20,7 @@ public class    AdminSectionNavigation {
     @Step("Get User creation page")
     public void getUserCreationPage(){
 
-        getAdminSection.waitUntil(visible, 30000).hover();
+        getAdminSection.shouldBe(Condition.visible, Duration.ofSeconds(30)).hover();
         getUserManagment.hover();
         getUserSection.hover().click();
     }
