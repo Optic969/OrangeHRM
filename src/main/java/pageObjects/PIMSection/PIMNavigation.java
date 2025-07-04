@@ -7,9 +7,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class PIMNavigation {
 
-    private SelenideElement getPIMSection = $x("//a[@id='menu_pim_viewPimModule']//b");
-    private SelenideElement getEmployeeList = $x("//a[@id='menu_pim_viewEmployeeList']");
-    private SelenideElement getEmployeeAdd = $x("//a[@id='menu_pim_addEmployee']");
+    private SelenideElement getPIMSection = $x("//span[normalize-space()='PIM']");
+    private SelenideElement getEmployeeList = $x("//a[normalize-space()='Employee List']");
+    private SelenideElement getEmployeeAdd = $x("//button[normalize-space()='Add']");
 
     @Step("Get PIM employee list page")
     public void getPIMEmployeeListPage(){
@@ -20,7 +20,7 @@ public class PIMNavigation {
     @Step("Get PIM Add employee page")
     public void getPIMAddEmployeePage(){
 
-        getPIMSection.hover();
+        getPIMSection.hover().click();
         getEmployeeAdd.hover().click();
     }
     @Step("Get PIM employee page")

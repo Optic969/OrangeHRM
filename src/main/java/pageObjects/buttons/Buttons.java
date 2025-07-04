@@ -9,11 +9,11 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Buttons {
 
-    private SelenideElement getAddButton = $x("//input[@id='btnAdd']");
-    private SelenideElement getSaveButton = $x("//input[@id='btnSave']");
+    private SelenideElement getAddButton = $x("//button[normalize-space()='Add']");
+    private SelenideElement getSaveButton = $x("//button[normalize-space()='Save']");
     private SelenideElement getDeleteButton = $x("//input[@id='btnDelete']");
     private SelenideElement getAssignButton = $x("//input[@id='assignBtn']");
-    private SelenideElement getCancelButton = $x("//input[@id='btnCancel']");
+    private SelenideElement getCancelButton = $x("//button[normalize-space()='Cancel']");
     private SelenideElement getPIM = $x("//b[contains(text(),'PIM')]");
     private SelenideElement getDialogDeleteButton = $x("//input[@id='dialogDeleteBtn']");
     private SelenideElement getDialogOkButton = $x("//input[@id='confirmOkButton']");

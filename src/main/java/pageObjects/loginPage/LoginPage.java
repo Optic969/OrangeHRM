@@ -7,9 +7,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
 
-    private SelenideElement getUserName = $x("//input[@id='txtUsername']");
-    private SelenideElement getPassword = $x("//input[@id='txtPassword']");
-    private SelenideElement getLogin = $x("//input[@id='btnLogin']");
+    private SelenideElement getUserName = $x("//input[@placeholder='Username']");
+    private SelenideElement getPassword = $x("//input[@placeholder='Password']");
+    private SelenideElement getLogin = $x("//button[normalize-space()='Login']");
     private SelenideElement userLink = $x("//a[@id='welcome']");
     private SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
 

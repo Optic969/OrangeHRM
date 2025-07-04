@@ -11,17 +11,18 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class    AdminSectionNavigation {
 
-    private SelenideElement getAdminSection = $x("//a[@id='menu_admin_viewAdminModule']//b");
-    private SelenideElement getUserManagment = $x("//a[@id='menu_admin_UserManagement']");
-    private SelenideElement getUserSection = $x("//*[@id=\"menu_admin_viewSystemUsers\"]");
+    private SelenideElement getAdminSection = $x("//span[normalize-space()='Admin']");
+    private SelenideElement getUserManagment = $x("//span[normalize-space()='User Management']");
+    private SelenideElement getUserSection = $x("//a[normalize-space()='Users']");
     private SelenideElement getJobSection = $x("//a[@id='menu_admin_Job']");
     private SelenideElement getJobTitleSection = $x("//a[@id='menu_admin_viewJobTitleList']");
 
     @Step("Get User creation page")
     public void getUserCreationPage(){
 
-        getAdminSection.shouldBe(Condition.visible, Duration.ofSeconds(30)).hover();
-        getUserManagment.hover();
+        //getAdminSection.shouldBe(Condition.visible, Duration.ofSeconds(30)).hover();
+        getAdminSection.hover().click();
+        getUserManagment.hover().click();
         getUserSection.hover().click();
     }
     @Step("Get User Page")

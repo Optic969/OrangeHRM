@@ -8,9 +8,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class EmployeeAddPage {
 
-    private SelenideElement getFirstNameField = $x("//input[@id='firstName']");
-    private SelenideElement getLastNameField = $x("//input[@id='lastName']");
-    private SelenideElement getEmployeeIdField = $x("//input[@id='employeeId']");
+    private SelenideElement getFirstNameField = $x("//input[@placeholder='First Name']");
+    private SelenideElement getLastNameField = $x("//input[@placeholder='Last Name']");
+    private SelenideElement getEmployeeIdField = $x("//div[@class='oxd-input-group oxd-input-field-bottom-space']//div//input[@class='oxd-input oxd-input--active']");
     public static String employeeId;
 
     @Step("Create new Employee")

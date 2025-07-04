@@ -6,31 +6,43 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import utils.Property;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AddUserForm {
 
-    private SelenideElement getNewEmployeeName = $x("//input[@id='systemUser_employeeName_empName']");
-    private SelenideElement getNewUserName = $x("//input[@id='systemUser_userName']");
-    private SelenideElement getNewPassword = $x("//input[@id='systemUser_password']");
-    private SelenideElement getConfirmPassword = $x("//input[@id='systemUser_confirmPassword']");
-    private SelenideElement getEmployeeNameHints = $x("//span[contains(text(),'Employee does not exist')]");
-    private SelenideElement getNewUserNameHints = $x("//span[contains(text(),'Required')]");
-    private SelenideElement getAddUserHeading = $x("//h1[@id='UserHeading']");
+    private SelenideElement getUserRoleList = $x("//label[normalize-space()='User Role']/following::div[contains(@class,'oxd-select-text')][1]");
+    private SelenideElement getUserRole = $x("//div[@role='option' and normalize-space()='Admin']");
+    private SelenideElement getUserStatusList = $x("//label[normalize-space()='Status']/following::div[contains(@class,'oxd-select-text')][1]");
+    private SelenideElement getUserStatus = $x("//div[@role='option' and normalize-space()='Enabled']");
+
+    private SelenideElement getNewEmployeeName = $x("//input[@placeholder='Type for hints...']");
+    private SelenideElement getNewUserName = $x("//label[contains(text(),'Username')]/following::input[1]");
+    private SelenideElement getNewPassword = $x("//label[contains(text(),'Password')]/following::input[@type='password'][1]");
+    private SelenideElement getConfirmPassword = $x("//label[contains(text(),'Confirm Password')]/following::input[@type='password'][1]");
+    private SelenideElement getEmployeeNameHints = $x("//body/div[@id='app']/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/span[1]");
+    private SelenideElement getNewUserNameHints = $x("//body/div[@id='app']/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/div[4]/div[1]/span[1]");
+    private SelenideElement getAddUserHeading = $x("//div[@role='listbox' and contains(@class, 'oxd-autocomplete-dropdown')]");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
     @Step("Add new user")
     public void addNewUser() throws InterruptedException {
 
+        getUserRoleList.click();
+        getUserRole.shouldBe(visible).click();
+        getUserStatusList.click();
+        getUserStatus.shouldBe(visible).click();
         getNewEmployeeName.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         getAddUserHeading.click();
         getNewUserName.sendKeys(Property.getProperty("userName"));
-        Selenide.sleep(1000);
+        getNewPassword.setValue("A1234567a");
+        getConfirmPassword.setValue("A1234567a");
+        Selenide.sleep(3000);
     }
     @Step("Check success message")
     public void checkSuccessMessage() {
 
-        successMessage.shouldBe(Condition.visible);
+        successMessage.shouldBe(visible);
     }
     @Step("Check hints for empty Add user form")
     public void shouldHaveHintsForEmptyAddUserForm(String EmployeeNameHint, String UserNameHint){
