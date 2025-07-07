@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class DashboardNavigation {
 
-    private SelenideElement getDashboardSectionPage = $x("//a[@id='menu_dashboard_index']//b");
+    private SelenideElement getDashboardSectionPage = $x("//span[text()='Dashboard']");
 
     @Step("Get Dashboard page")
     public void getDashboardPage(){

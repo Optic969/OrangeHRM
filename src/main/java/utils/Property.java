@@ -1,4 +1,5 @@
 package utils;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -11,6 +12,7 @@ public class Property {
     static {
         try {
             fileInputStream = new FileInputStream("./src/main/resources/login.properties");
+            //fileInputStream = new FileInputStream("config/login.properties");
             properties = new Properties();
             properties.load(fileInputStream);
         } catch (IOException e) {

@@ -8,23 +8,23 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class DashboardPage {
 
-    private SelenideElement getDashboardTitle = $x("//h1[contains(text(),'Dashboard')]");
-    private SelenideElement getDashboardAssignLeaveLink = $x("//span[contains(text(),'Assign Leave')]");
-    private SelenideElement getDashboardLeaveListLink =$x("//span[contains(text(),'Leave List')]");
-    private SelenideElement getDashboardTimesheets = $x("//span[contains(text(),'Timesheets')]");
-    private SelenideElement getDashboardEmployeeDistributionDiagram = $x("//div[@id='dashboard__employeeDistribution']");
-    private SelenideElement getDashboardLegend = $x("//div[@id='panel_draggable_1_1']");
-    private SelenideElement getDashboardPendingLeaveRequest = $x("//div[@id='task-list-group-panel-menu_holder']");
+    private SelenideElement getDashboardTitle = $x("//h6[normalize-space()='Dashboard']");
+    private SelenideElement getDashboardTimeAtWork = $x("//p[normalize-space()='Time at Work']");
+    private SelenideElement getDashboardMyAction =$x("//p[normalize-space()='My Actions']");
+    private SelenideElement getDashboardQuickLaunch = $x("//p[normalize-space()='Quick Launch']");
+    private SelenideElement getDashboardBuzzLatestPosts = $x("//p[normalize-space()='Buzz Latest Posts']");
+    private SelenideElement getDashboardEmployeesOnLeaveToday = $x("//p[normalize-space()='Employees on Leave Today']");
+    private SelenideElement getDashboardEmployeeDistributionBySubUnit = $x("//p[normalize-space()='Employee Distribution by Sub Unit']");
 
     @Step("Check Dashboard element present")
     public void checkDashboardElementPresent(){
 
         getDashboardTitle.shouldBe(Condition.visible);
-        getDashboardAssignLeaveLink.shouldBe(Condition.visible);
-        getDashboardLeaveListLink.shouldBe(Condition.visible);
-        getDashboardTimesheets.shouldBe(Condition.visible);
-        getDashboardEmployeeDistributionDiagram.shouldBe(Condition.visible);
-        getDashboardLegend.shouldBe(Condition.visible);
-        getDashboardPendingLeaveRequest.shouldBe(Condition.visible);
+        getDashboardTimeAtWork.shouldBe(Condition.visible);
+        getDashboardMyAction.shouldBe(Condition.visible);
+        getDashboardQuickLaunch.shouldBe(Condition.visible);
+        getDashboardBuzzLatestPosts.shouldBe(Condition.visible);
+        getDashboardEmployeesOnLeaveToday.shouldBe(Condition.visible);
+        getDashboardEmployeeDistributionBySubUnit.shouldBe(Condition.visible);
     }
 }

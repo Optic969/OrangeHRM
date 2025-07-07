@@ -6,6 +6,9 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import utils.Property;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,8 +25,8 @@ public class AddUserForm {
     private SelenideElement getConfirmPassword = $x("//label[contains(text(),'Confirm Password')]/following::input[@type='password'][1]");
     private SelenideElement getEmployeeNameHints = $x("//body/div[@id='app']/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/span[1]");
     private SelenideElement getNewUserNameHints = $x("//body/div[@id='app']/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/div[4]/div[1]/span[1]");
-    private SelenideElement getAddUserHeading = $x("//div[@role='listbox' and contains(@class, 'oxd-autocomplete-dropdown')]");
-    private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
+    private SelenideElement getAddUserHeading = $x("//div[@role='option']//span[contains(normalize-space(), 'Ivan6 Ivanov6')]");
+    private final SelenideElement successMessage = $x("//div[contains(@class,'oxd-toast-content--success')]");
 
     @Step("Add new user")
     public void addNewUser() throws InterruptedException {
@@ -33,7 +36,7 @@ public class AddUserForm {
         getUserStatusList.click();
         getUserStatus.shouldBe(visible).click();
         getNewEmployeeName.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
-        getAddUserHeading.click();
+        getAddUserHeading.shouldBe(visible).click();
         getNewUserName.sendKeys(Property.getProperty("userName"));
         getNewPassword.setValue("A1234567a");
         getConfirmPassword.setValue("A1234567a");
@@ -42,19 +45,19 @@ public class AddUserForm {
     @Step("Check success message")
     public void checkSuccessMessage() {
 
-        successMessage.shouldBe(visible);
+        successMessage.shouldHave(text("Successfully Saved"));
     }
     @Step("Check hints for empty Add user form")
     public void shouldHaveHintsForEmptyAddUserForm(String EmployeeNameHint, String UserNameHint){
 
-        getEmployeeNameHints.shouldHave(Condition.text(EmployeeNameHint));
-        getNewUserNameHints.shouldHave(Condition.text(UserNameHint));
+        getEmployeeNameHints.shouldHave(text(EmployeeNameHint));
+        getNewUserNameHints.shouldHave(text(UserNameHint));
     }
     public void shouldHaveAddedUserAttribute(String EmployeeName, String UserName, String Password, String ConfirmPassword) {
 
-        getNewEmployeeName.shouldHave(Condition.text(EmployeeName));
-        getNewUserName.shouldHave(Condition.text(UserName));
-        getNewPassword.shouldHave(Condition.text(Password));
-        getConfirmPassword.shouldHave(Condition.text(ConfirmPassword));
+        getNewEmployeeName.shouldHave(text(EmployeeName));
+        getNewUserName.shouldHave(text(UserName));
+        getNewPassword.shouldHave(text(Password));
+        getConfirmPassword.shouldHave(text(ConfirmPassword));
     }
 }

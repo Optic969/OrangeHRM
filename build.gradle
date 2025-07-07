@@ -24,6 +24,10 @@ tasks.withType(JavaCompile){
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "failed", "skipped", "standardOut", "standardError"
+        showStandardStreams = true
+    }
 }
 
 configurations.configureEach {
@@ -34,6 +38,7 @@ configurations.configureEach {
 
 dependencies {
     implementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
+    implementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.codeborne:selenide:6.19.1'
     implementation('io.qameta.allure:allure-selenide:2.13.2')
     implementation('com.google.guava:guava:32.1.2-jre') {

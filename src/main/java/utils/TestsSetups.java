@@ -8,15 +8,25 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestsSetups {
 
     @BeforeAll
-    public static void setConfiguration() {
+        public static void setConfiguration() throws IOException {
+        System.out.println("Working directory: " + System.getProperty("user.dir"));
+        System.out.println("Full path: " + new File("config/login.properties").getAbsolutePath());
+        //updatePropertiesFile();
         Configuration.timeout = 5000;
         SelenideLogger.addListener("allure", new AllureSelenide());
         //Configuration.browser = "chrome";
@@ -36,6 +46,20 @@ public class TestsSetups {
 
         open(Configuration.baseUrl);
     }
+    public static String generateRandomUserName() {
+        return "User" + new Random().nextInt(10000);
+    }
+    public static void updatePropertiesFile() throws IOException {
+        Properties props = new Properties();
+        try (FileInputStream in = new FileInputStream("login.properties")) {
+            props.load(in);
+        }
+        props.setProperty("userName", generateRandomUserName());
+        try (FileOutputStream out = new FileOutputStream("login.properties")) {
+            props.store(out, "Updated with random userName");
+        }
+    }
+
     @AfterAll
     static void tearDown() {
         SelenideLogger.removeListener("allure");
