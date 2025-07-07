@@ -7,9 +7,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class AddCandidatesForm {
 
-    private SelenideElement getFirstNameField = $x("//input[@id='addCandidate_firstName']");
-    private SelenideElement getLastNameField = $x("//input[@id='addCandidate_lastName']");
-    private SelenideElement getEmailField = $x("//input[@id='addCandidate_email']");
+    private SelenideElement getFirstNameField = $x("//input[@placeholder='First Name']");
+    private SelenideElement getLastNameField = $x("//input[@placeholder='Last Name']");
+    private SelenideElement getEmailField = $x("//label[contains(text(),'Email')]/following::input[1]");
 
     @Step("Add New candidate")
     public void addCandidate(){

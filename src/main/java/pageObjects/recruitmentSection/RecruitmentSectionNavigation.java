@@ -8,14 +8,14 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class RecruitmentSectionNavigation {
 
-    private SelenideElement getRecruitmentSection = $x("//b[contains(text(),'Recruitment')]");
-    private SelenideElement getCandidateSection = $x("//a[@id='menu_recruitment_viewCandidates']");
+    private SelenideElement getRecruitmentSection = $x("//span[normalize-space()='Recruitment']");
+    private SelenideElement getCandidateSection = $x("//a[normalize-space()='Candidates']");
     private SelenideElement getErrorMessageField = $x("//div[@class='message error']");
 
     @Step("Get New recruitment candidates page")
     public void getAddNewRecruitmentCandidatesPage(){
 
-        getRecruitmentSection.hover();
+        getRecruitmentSection.hover().click();
         getCandidateSection.hover().click();
     }
     @Step("Check Error message for add New recruitment")

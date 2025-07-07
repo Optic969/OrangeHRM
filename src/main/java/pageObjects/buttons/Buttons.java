@@ -4,18 +4,24 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$x;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Buttons {
 
     private SelenideElement getAddButton = $x("//button[normalize-space()='Add']");
     private SelenideElement getSaveButton = $x("//button[normalize-space()='Save']");
-    private SelenideElement getDeleteButton = $x("//input[@id='btnDelete']");
+    private SelenideElement getDeleteButton = $x("//button[contains(@class,'oxd-button') and contains(.,'Delete Selected')]");
+    //private SelenideElement getDeleteButton = $x("//button[.//i[contains(@class,'bi-trash-fill')]]");
+    //button[.//i[contains(@class,'bi-trash-fill')]]
     private SelenideElement getAssignButton = $x("//input[@id='assignBtn']");
     private SelenideElement getCancelButton = $x("//button[normalize-space()='Cancel']");
     private SelenideElement getPIM = $x("//b[contains(text(),'PIM')]");
-    private SelenideElement getDialogDeleteButton = $x("//input[@id='dialogDeleteBtn']");
+    private SelenideElement getDialogDeleteButton = $x("//button[normalize-space()='Yes, Delete']");
     private SelenideElement getDialogOkButton = $x("//input[@id='confirmOkButton']");
     private SelenideElement getSearchButton = $x("//input[@id='searchBtn']");
 
@@ -36,7 +42,9 @@ public class Buttons {
     public void clickDeleteButton() throws InterruptedException {
 
         Thread.sleep(1000);
-        getDeleteButton.click();
+        //$("[class='oxd-topbar-header-title']").should(disappear);
+        executeJavaScript("arguments[0].click();", getDeleteButton);
+        //getDeleteButton.scrollIntoView(true).shouldBe(visible).click();
     }
     @Step("Click Dialog Delete button")
     public void clickDialogDeleteButton() throws InterruptedException {
@@ -61,7 +69,7 @@ public class Buttons {
     public void clickDialogOkButton() throws InterruptedException {
 
         Thread.sleep(1000);
-        getDialogOkButton.shouldBe(Condition.visible).click();
+        getDialogOkButton.shouldBe(visible).click();
     }
     @Step("Click PIM button")
     public void clickPIM(){

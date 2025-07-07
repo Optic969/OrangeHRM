@@ -14,8 +14,8 @@ public class    AdminSectionNavigation {
     private SelenideElement getAdminSection = $x("//span[normalize-space()='Admin']");
     private SelenideElement getUserManagment = $x("//span[normalize-space()='User Management']");
     private SelenideElement getUserSection = $x("//a[normalize-space()='Users']");
-    private SelenideElement getJobSection = $x("//a[@id='menu_admin_Job']");
-    private SelenideElement getJobTitleSection = $x("//a[@id='menu_admin_viewJobTitleList']");
+    private SelenideElement getJobSection = $x("//span[normalize-space()='Job']");
+    private SelenideElement getJobTitleSection = $x("//a[normalize-space()='Job Titles']");
 
     @Step("Get User creation page")
     public void getUserCreationPage(){
@@ -33,8 +33,8 @@ public class    AdminSectionNavigation {
     @Step("Get Job title creation page")
     public void getJobTitleCreationPage(){
 
-        getAdminSection.hover();
-        getJobSection.hover();
-        getJobTitleSection.hover().click();
+        getAdminSection.click();
+        getJobSection.click();
+        getJobTitleSection.shouldBe(visible).click();
     }
 }
