@@ -13,21 +13,18 @@ public class PIMNavigation {
 
     @Step("Get PIM employee list page")
     public void getPIMEmployeeListPage() {
-
-        getPIMSection.hover();
+        getPIMSection.hover().click();
         getEmployeeList.hover().click();
     }
 
     @Step("Get PIM Add employee page")
     public void getPIMAddEmployeePage() {
-
         getPIMSection.hover().click();
         getEmployeeAdd.hover().click();
     }
 
     @Step("Get PIM employee page")
     public void getPIMEmployeePage() {
-
         getPIMSection.click();
         getEmployeeList.click();
     }

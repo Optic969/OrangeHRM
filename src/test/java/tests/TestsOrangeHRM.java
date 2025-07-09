@@ -1,5 +1,6 @@
 package tests;
 
+import dev.failsafe.internal.util.Assert;
 import org.junit.jupiter.api.*;
 import pageObjects.adminSection.*;
 import pageObjects.buttons.Buttons;
@@ -47,6 +48,7 @@ public class  TestsOrangeHRM extends TestsSetups {
         pimNavigation.getPIMAddEmployeePage();
         employeeAddPage.createNewEmployee();
         buttons.clickSaveButton();
+        employeeListPage.checkSuccessMessage();
     }
     @Test
     @Order(3)
@@ -154,7 +156,8 @@ public class  TestsOrangeHRM extends TestsSetups {
         employeeListPage.getEmployForDelete();
         buttons.clickDeleteButton();
         buttons.clickDialogDeleteButton();
-        employeeListPage.checkSuccessMessage();
+        employeeListPage.checkSuccessDeleteMessage();
         loginPage.logoutFromApp();
+
     }
 }
