@@ -12,7 +12,7 @@ public class AddCandidatesForm {
     private SelenideElement getEmailField = $x("//label[contains(text(),'Email')]/following::input[1]");
 
     @Step("Add New candidate")
-    public void addCandidate(){
+    public void addCandidate() {
 
         getFirstNameField.sendKeys("Petr");
         getLastNameField.sendKeys("Petrov");

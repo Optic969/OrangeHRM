@@ -14,7 +14,7 @@ public class EmployeeAddPage {
     public static String employeeId;
 
     @Step("Create new Employee")
-    public void createNewEmployee(){
+    public void createNewEmployee() {
 
         getFirstNameField.sendKeys(Property.getProperty("employeeName"));
         getLastNameField.sendKeys(Property.getProperty("employeeLastName"));

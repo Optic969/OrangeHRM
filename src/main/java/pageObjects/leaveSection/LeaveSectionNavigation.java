@@ -11,7 +11,7 @@ public class LeaveSectionNavigation {
     private SelenideElement getAssignLeaveSection = $x("//a[normalize-space()='Assign Leave']");
 
     @Step("Get Assign Leave page")
-    public void getAssignLeavePage(){
+    public void getAssignLeavePage() {
 
         getLeaveSection.hover().click();
         getAssignLeaveSection.hover().click();

@@ -18,13 +18,14 @@ public class LoginPage {
     private SelenideElement getDashboardSectionPage = $x("//span[normalize-space()='Dashboard']");
 
     @Step("Authorization to OrangeHRM")
-    public void getAuthorization(){
+    public void getAuthorization() {
 
         getUserName.sendKeys("Admin");
         getPassword.sendKeys("admin123");
         getLogin.click();
         //assertTrue(getDashboardSectionPage.isDisplayed(), "Заголовок Dashboard не отображается");
-}
+    }
+
     @Step("Log out from OrangeHRM")
     public void logoutFromApp() {
 

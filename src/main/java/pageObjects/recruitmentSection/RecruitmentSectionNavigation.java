@@ -13,13 +13,14 @@ public class RecruitmentSectionNavigation {
     private SelenideElement getErrorMessageField = $x("//div[@class='message error']");
 
     @Step("Get New recruitment candidates page")
-    public void getAddNewRecruitmentCandidatesPage(){
+    public void getAddNewRecruitmentCandidatesPage() {
 
         getRecruitmentSection.hover().click();
         getCandidateSection.hover().click();
     }
+
     @Step("Check Error message for add New recruitment")
-    public void shouldHaveErrorMessage(String ErrorMessage){
+    public void shouldHaveErrorMessage(String ErrorMessage) {
 
         getErrorMessageField.shouldHave(Condition.text(ErrorMessage));
     }

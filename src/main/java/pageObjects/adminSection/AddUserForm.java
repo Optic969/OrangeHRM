@@ -42,17 +42,20 @@ public class AddUserForm {
         getConfirmPassword.setValue("A1234567a");
         Selenide.sleep(3000);
     }
+
     @Step("Check success message")
     public void checkSuccessMessage() {
 
         successMessage.shouldHave(text("Successfully Saved"));
     }
+
     @Step("Check hints for empty Add user form")
-    public void shouldHaveHintsForEmptyAddUserForm(String EmployeeNameHint, String UserNameHint){
+    public void shouldHaveHintsForEmptyAddUserForm(String EmployeeNameHint, String UserNameHint) {
 
         getEmployeeNameHints.shouldHave(text(EmployeeNameHint));
         getNewUserNameHints.shouldHave(text(UserNameHint));
     }
+
     public void shouldHaveAddedUserAttribute(String EmployeeName, String UserName, String Password, String ConfirmPassword) {
 
         getNewEmployeeName.shouldHave(text(EmployeeName));

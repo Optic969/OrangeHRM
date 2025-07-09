@@ -10,7 +10,7 @@ public class DashboardNavigation {
     private SelenideElement getDashboardSectionPage = $x("//span[text()='Dashboard']");
 
     @Step("Get Dashboard page")
-    public void getDashboardPage(){
+    public void getDashboardPage() {
 
         getDashboardSectionPage.click();
     }

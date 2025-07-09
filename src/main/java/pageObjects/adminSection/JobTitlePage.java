@@ -23,9 +23,11 @@ public class JobTitlePage {
     @Step("Choose added three Job title")
     public void chooseAddedThreeJobTitle() {
         getJobTitleCheckBox.shouldHave(sizeGreaterThan(1));
-        for (
-                SelenideElement jobTitle : getJobTitleCheckBox) {
-            jobTitle.scrollIntoView(true).shouldBe(visible);
+
+        for (SelenideElement jobTitle : getJobTitleCheckBox) {
+            jobTitle
+                    .scrollIntoView(true)
+                    .shouldBe(visible);
             executeJavaScript("arguments[0].click();", jobTitle);
         }
     }
@@ -34,10 +36,10 @@ public class JobTitlePage {
         executeJavaScript("arguments[0].click();", getJobTitleCheckBox);
     }*/
     @Step("Check success Title message")
-        public void checkSuccessTitleMessage () {
-            sleep(500);
-            successMessage.should(appear);
-            successMessage.shouldHave(text("Successfully Deleted"));
+    public void checkSuccessTitleMessage() {
+        sleep(500);
+        successMessage.should(appear);
+        successMessage.shouldHave(text("Successfully Deleted"));
     }
 }
 

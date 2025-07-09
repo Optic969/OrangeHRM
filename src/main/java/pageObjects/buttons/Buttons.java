@@ -31,6 +31,7 @@ public class Buttons {
         Thread.sleep(1000);
         getAddButton.click();
     }
+
     @Step("Click Save button")
     public void clickSaveButton() throws InterruptedException {
 
@@ -39,6 +40,7 @@ public class Buttons {
         getSaveButton.click();
         Selenide.sleep(1000);*/
     }
+
     @Step("Click Delete button")
     public void clickDeleteButton() throws InterruptedException {
 
@@ -47,6 +49,7 @@ public class Buttons {
         executeJavaScript("arguments[0].click();", getDeleteButton);
         //getDeleteButton.scrollIntoView(true).shouldBe(visible).click();
     }
+
     @Step("Click Dialog Delete button")
     public void clickDialogDeleteButton() throws InterruptedException {
 
@@ -54,26 +57,30 @@ public class Buttons {
         getDialogDeleteButton.click();
         Selenide.sleep(1000);
     }
+
     @Step("Click Assign button")
     public void clickAssignButton() throws InterruptedException {
 
         Thread.sleep(1000);
         getAssignButton.click();
     }
+
     @Step("Click Cancel button")
     public void clickCancelButton() throws InterruptedException {
 
         Thread.sleep(1000);
         getCancelButton.click();
     }
+
     @Step("Click Dialog Ok button")
     public void clickDialogOkButton() throws InterruptedException {
 
         Thread.sleep(1000);
         getDialogOkButton.shouldBe(visible).click();
     }
+
     @Step("Click PIM button")
-    public void clickPIM(){
+    public void clickPIM() {
 
         getPIM.click();
     }

@@ -29,7 +29,11 @@ public class AssignLeaveForm {
     private SelenideElement getEmployeeNameHeading = $x("//div[@role='option']//span[text()='Ivan6  Ivanov6']");
 
     @Step("Check hints for empty Assign leave form")
-    public void shouldHaveHintsForEmptyAssignLeaveForm(String EmployeeNameHint,String LeaveTypeHints,String FromDateHints,String ToDateHints){
+    public void shouldHaveHintsForEmptyAssignLeaveForm(
+            String EmployeeNameHint,
+            String LeaveTypeHints,
+            String FromDateHints,
+            String ToDateHints) {
 
         getEmployeeNameHints.shouldHave(Condition.text(EmployeeNameHint));
         getLeaveTypeHints.shouldHave(Condition.text(LeaveTypeHints));
@@ -38,17 +42,24 @@ public class AssignLeaveForm {
 
     }
     @Step("Add Assign leave")
-    public void getAddAssignLeave(int CalendarDayFrom, int CalendarDayTo){
+    public void getAddAssignLeave(int CalendarDayFrom, int CalendarDayTo) {
 
-        getEmployeeNameField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
+        getEmployeeNameField.sendKeys(String.format("%s %s",
+                Property.getProperty("employeeName"),
+                Property.getProperty("employeeLastName")));
         getEmployeeNameHeading.shouldBe(visible).click();
+
         getLeaveTypeDropDownList.click();
         getLeaveTypeDropDownListData.shouldBe(visible);
+
         getDataFromLeaveTypeDropDownList.scrollIntoView(true).click();
+
         getFromDateField.click();
         getFromDateInCalendar.get(CalendarDayFrom).scrollIntoView(true).click();
+
         getToDateField.click();
         getToDateInCalendar.get(CalendarDayTo).scrollIntoView(true).click();
+
         Selenide.sleep(1000);
 
     }

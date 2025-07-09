@@ -39,6 +39,7 @@ public class EmployeePersonalDetailsForm {
         editButton.shouldBe(Condition.visible);
         addAttachmentButton.shouldBe(Condition.visible);
     }
+
     @Step("Check contains for Personal info")
     public void shouldContainsPersonalInfo() {
 

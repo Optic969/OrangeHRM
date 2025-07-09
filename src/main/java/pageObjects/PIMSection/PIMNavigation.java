@@ -12,19 +12,21 @@ public class PIMNavigation {
     private SelenideElement getEmployeeAdd = $x("//button[normalize-space()='Add']");
 
     @Step("Get PIM employee list page")
-    public void getPIMEmployeeListPage(){
+    public void getPIMEmployeeListPage() {
 
         getPIMSection.hover();
         getEmployeeList.hover().click();
     }
+
     @Step("Get PIM Add employee page")
-    public void getPIMAddEmployeePage(){
+    public void getPIMAddEmployeePage() {
 
         getPIMSection.hover().click();
         getEmployeeAdd.hover().click();
     }
+
     @Step("Get PIM employee page")
-    public void getPIMEmployeePage(){
+    public void getPIMEmployeePage() {
 
         getPIMSection.click();
         getEmployeeList.click();

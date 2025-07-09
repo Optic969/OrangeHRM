@@ -19,13 +19,15 @@ public class EmployeeListPage {
         idNumber.click();
         $x(String.format("//a[contains(text(), %s)]", EmployeeAddPage.employeeId)).click();
     }
+
     @Step("Get Employee for delete")
-    public void getEmployForDelete(){
+    public void getEmployForDelete() {
 
         idNumber.click();
         idNumber.click();
         $x(String.format("//a[contains(text(), %s)]/parent::td/preceding-sibling::td", EmployeeAddPage.employeeId)).click();
     }
+
     @Step("Check success message")
     public void checkSuccessMessage() {
 
